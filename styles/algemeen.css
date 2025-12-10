@@ -1,0 +1,386 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+
+
+
+/* THEMES */
+
+:root {
+    --background-button:#Ffbc0d;
+    --font-color:#292929; 
+    --background-color: white;
+    --darkmode-font-color: white;
+}
+
+
+
+@font-face{
+    font-family: "icomoon";
+    src: url(icomoon.ttf);
+}
+
+@font-face{
+    font-family: "speedee-bold";
+    src: url(Speedee-Bold.woff2);
+}
+
+@font-face{
+    font-family: "speedee-regular";
+    src: url(Speedee-Regular.woff2);
+}
+
+
+
+
+/* WRAPPERS  */
+
+/* sanne */
+/* niet scrollen als nav open is */
+html:has( header nav.is-open  ) {
+    overflow:hidden;
+}
+
+body {
+    margin:0;
+    color:var(--font-color);
+    background-color:var(--background-color)
+}
+
+body > header nav ul li a{
+    padding: 1rem 0; /* 0.5rem boven en onder de tekst */
+    display: inline-block; /* zodat padding effectief is */
+}
+
+
+.off-screen-menu {
+    color:var(--font-color);
+}
+
+
+
+p, a, summary, figure, label{
+    margin: 0;
+    font-family: speedee-regular;
+}
+
+    a:focus-visible {
+        outline:solid .15em currentcolor;
+	outline-offset: .2em;
+    
+}
+
+
+
+a, summary{
+    text-decoration: none;
+    color:var(--font-color);
+}
+
+
+nav ul a {
+    text-decoration: none;
+    color: var(--font-color);
+    
+   
+}
+
+/* netjes */
+
+h3 {
+    font-size: 1.5em;
+    margin: 0;
+    font-family: speedee-bold;
+  }
+  
+  @media (min-width: 50em) {
+    h3 {
+      font-size: 1.5em;
+    }
+  }
+  
+  @media (min-width: 62.5em) {
+    h3 {
+      font-size: 2em;
+    }
+  }
+
+  @media (width >40.625em) {
+    ul{ grid-template-columns:1fr 1fr; }
+}
+
+  
+@media (min-width: 62.5em) { /* MacBook formaat */
+    main section {
+        padding: 0 5em;
+    }
+}
+
+
+  /* FOOTER */
+
+  footer {
+    position: relative;
+    z-index: 10;
+  top: 10em;
+  
+  }
+
+footer ul{
+
+    padding:0;
+    list-style-type: none;
+    margin: 0 auto;       /* centreert de content */
+    
+}
+
+
+footer a{
+    padding: 0.5em 1em;
+    display: inline-block; 
+    margin-bottom: 1em;
+    top: 1em;
+}
+
+footer details {
+  
+    background-color: #f2f2f2;
+    
+    width: 100%;
+    margin: 0 auto 1em auto; /* centreert de buttons binnen de container */
+    padding: 0.5em 1.5em;
+    border-radius: 0.313em;
+}
+
+footer summary {
+    cursor: pointer;
+    font-size: 1.125em;
+    font-weight: bold;
+
+    list-style: none;          
+
+
+    display:flex;
+justify-content:space-between;
+align-items:center;
+
+cursor:pointer;
+}
+
+footer summary::-webkit-details-marker {
+    display: none;  
+}
+
+summary::after {
+    content:"";
+    position:relative;
+    
+    width:.5em;
+    height:.5em;
+    background-color:rgb(0, 0, 0);
+    transition:.5s;
+    
+    clip-path:polygon( 0 0, 100% 0, 50% 100%, 0 0);
+}
+
+
+
+
+
+
+/* Als details open is, verandert plus in min */
+details[open] summary::after {
+    rotate:180deg;
+    
+}
+
+
+@media (min-width: 62.5em) {
+    /* Container van de kolommen */
+    footer section > ul > li {
+        display:flex;
+        gap:1em;
+        margin: 5em;
+    justify-content:space-between;
+    }
+
+    details::details-content {
+        content-visibility:visible;
+    }
+
+    footer summary{
+        pointer-events: none;
+    }
+
+    footer details {
+        
+        background: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    summary::after {
+        display:none;
+    }
+}
+
+    /* Titel blijft klikbaar */
+    footer summary {
+        cursor: pointer;
+        font-size: 1.125em;
+        font-weight: bold;
+        padding: 0;
+        margin-bottom: .5em;
+
+    }
+
+    /* Lijstjes netjes onder de titel */
+    footer details ul {
+        
+  
+        margin-top: .5em;
+    }
+
+    footer details ul li {
+        margin-bottom: .3em;
+        
+    }
+
+
+/* TWEEDE DEEL FOOTER */
+
+
+footer section:nth-of-type(2) {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+    margin: 1em;
+    padding-top: 1em;
+    border-top: 0.063em solid #cecece;
+    padding: 1em;
+}
+
+footer section:nth-of-type(2) p {
+    Font-size: 0.75em;
+   
+}
+
+footer section:nth-of-type(2) a {
+    Font-size: 0.75em;
+}
+
+footer section:nth-of-type(2) img {
+    width:1em;
+    height:auto;
+}
+
+
+footer section:nth-of-type(2) {
+display: flex;
+align-items: center;
+gap: 1em; 
+text-align: center;
+}
+
+
+section > a {
+    text-decoration: none;
+}
+
+/* Zorg dat het laatste link geen extra margin krijgt */
+section > a:last-of-type {
+    margin-right: 0;
+}
+
+
+/* Logo en tekst samen centreren */
+section > img + p {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+}
+
+
+@media (min-width: 62.5em) {
+    footer section:nth-of-type(2) {
+        flex-direction: row;      
+        justify-content: space-between; 
+        align-items: center;     
+        margin: 0 5em;  
+    }
+
+    .footer-links, .footer-logo-text {
+        flex: 1;                      /* beide kolommen nemen evenveel ruimte */
+        justify-content: center;   
+    }
+
+    footer details {
+        max-width: 81.25em;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-button:#Ffbc0d;
+        --background-color-dark: #20372f;
+        --darkmode-font-color: white;
+        --accent-color-dark: #1C2E2A;
+     
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    main, footer, body{
+        background-color:var(--background-color-dark)
+    
+    }
+
+    header {
+        background-color:var(--accent-color-dark)
+    }
+
+    body > header h3 {
+        color:var(--accent-color-dark)
+    }
+
+
+
+    summary::after {
+        background-color:var(--darkmode-font-color)
+    }
+
+    body > header button::before, body > header button::after{
+        background-color:var(--darkmode-font-color)
+    }
+    
+    footer details{
+    
+        background-color:var(--accent-color-dark)
+    }
+    
+    p, h3, h4, h1, footer a{
+        color:var(--darkmode-font-color)
+    
+    }
+    
+    nav ul li a, label, summary, figcaption, footer ul li a, footer p{
+        color:var(--darkmode-font-color)
+    
+    }
+    
+    nav{
+
+        border-bottom: #1C2E2A;
+        background-color: #203732;
+    }
+
+    main section:nth-of-type(1) ul{
+        border-color:#1C2E2A;
+        
+    }
+    
+    }

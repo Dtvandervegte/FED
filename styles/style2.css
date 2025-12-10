@@ -1,0 +1,674 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+
+
+
+/* THEMES */
+
+
+
+/* LOGO  */
+body >  header > img {
+    width: 40px;
+    height: auto;
+    justify-self: start;
+    
+}
+
+/* WRAPPERS  */
+main {
+    color:var(--font-color);
+    
+}
+
+.off-screen-menu {
+    color:var(--font-color);
+}
+
+
+
+p, a, summary, figure, label{
+    margin: 0;
+    font-family: speedee-regular;
+    font-size: 0.875em;
+}
+
+    a:focus-visible {
+        outline:solid .15em currentcolor;
+	outline-offset: .2em;
+    
+}
+
+a{
+    text-decoration: none;
+    color:var(--font-color);
+}
+
+header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 1em;
+    gap: 1em;
+    position: relative;
+    
+}
+
+
+
+
+header h3 {
+    font-size: 1em;
+    margin: 0;
+    font-family: speedee-bold;
+    justify-self: center;
+    background-color: #Ffbc0d;
+    padding: 1em 2em;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 37.5em) {
+    body > header h3 {
+        font-size: 1.5rem;
+        margin: 0;
+        padding: 1em 3em;
+    }
+}
+
+main h3 {
+    
+    margin: 2em 0;
+    font-size: 1.5em;
+    font-family: speedee-bold;
+  }
+
+
+  h1 {
+    font-size: 2.25em;
+    margin: 2;
+    padding: 0;
+    font-family: speedee-bold;
+  }
+
+
+  
+  @media (min-width: 50em) {
+    h3 {
+      font-size: 1.75em;
+    }
+  }
+  
+  @media (min-width: 62.5em) {
+    h3 {
+      font-size: 2em;
+    }
+  }
+
+  @media (width >40.625em) {
+    ul{ grid-template-columns:1fr 1fr; }
+}
+
+  
+@media (min-width: 62.5em) { /* MacBook formaat */
+    main section {
+        padding: 0 5em;
+    }
+}
+
+/* HAMBURGER BUTTON */
+body > header button {
+
+    height: 2.5em;
+    width: 2.5em;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    border: none;
+    background: none;
+    justify-self: end;
+}
+
+/* DE TWEE LIJNTJES GECREËERD MET PSEUDO-ELEMENTEN */
+body > header button::before,
+body > header button::after {
+    content: "";
+    height: 0.188em;
+    width: 100%;
+    background-color: black;
+    border-radius: 1.563em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .3s ease;
+}
+
+body > header button::before {
+    top: 25%;
+}
+
+body > header button::after {
+    top: 75%;
+}
+
+
+
+/* ACTIVE STATE */
+body > header button.is-open::before {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+body > header button.is-open::after {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/* NAV  */
+
+body > header nav {
+    background-color: white;
+    
+    position: fixed;
+    top: 6em;
+    bottom:0;
+    right:0;
+    left:0;  
+
+
+    translate:-100%;
+    
+    overflow-y:auto;
+    overflow-x:clip;
+
+    display: flex;
+    flex-direction: column;
+    /* align-items:start; */
+    justify-content:start;
+
+    /* padding-top: 2rem;
+    padding-left: 5rem; */
+
+    padding:2em 1em 2em 5em;
+
+    /* font-size: 3rem; */
+
+    transition: .3s ease;
+    z-index: 1;
+    
+    /* overflow-y: auto;   */
+    /* Zorgt dat het menu verticaal scrollt */
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+header nav.is-open {
+    translate:0;
+
+}
+
+
+/* EEN LIJSTJE LINK */
+
+body > header nav ul {
+    list-style-type: none;
+    border-top: 0.063em solid #cecece;
+    align-items: center;
+
+    margin:0;
+    padding:0;
+}
+
+body > header nav ul li a {
+    padding: 1rem 0; 
+
+}
+
+/* submenu */
+body > header nav summary {
+    font-size: 0.938em;
+    padding: 1rem 0;
+    cursor: pointer;
+    list-style: none;
+}
+
+
+body > header summary::before {
+    font-family: "icomoon";
+    content: "";
+    position: relative;
+    right: 1em;  
+ 
+    font-weight: bold;
+}
+
+body > header details[open] summary::before {
+    font-family: "icomoon";
+    content: "";
+}
+
+body > header details figure {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+}
+
+body > header details figure img {
+    width: 3.75em;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.375em;
+}
+
+    
+
+body > header details figure figcaption {
+    font-size: .875em;
+    line-height: 1.4;
+}
+
+
+
+
+
+/* ZOEKEN */
+
+body > header search {
+    border-top: 0.063em solid #cecece;
+}
+
+body > header search  label{
+    padding: 1rem 0; /* 0.5rem boven en onder de tekst */
+
+    display: flex; /* zodat padding effectief is */
+    align-items: center;
+    gap:.5em;
+}
+
+body > header search  label input {
+    font:inherit;
+}
+
+
+
+
+
+
+
+
+/* 1000px Nav */
+
+/* Boven 1000px: desktop */
+@media screen and (min-width: 62.5em) {
+
+    body > header {
+        display:flex;
+
+        gap:1em;
+        padding:1em;
+        /* margin: 0 3em 0 3em; */
+
+        box-shadow: none;
+
+
+        max-width:73.125em;
+        margin-inline:auto;
+    }
+
+    body > header h3 {
+        display: none;
+    }
+    
+
+    /* HAMBURGER BUTTON */
+    body > header button {
+        /* Verberg hamburger button */
+        display: none;
+    }
+   
+    
+
+    /* LOGO  */
+
+
+    /* Slide-out menu verbergen */
+    body > header nav {
+        position: static;   /* Gewoon in de flow van nav */
+ 
+        background: none;
+        padding: 0;
+
+        flex-grow:1;
+   
+        translate:0;
+
+        overflow: visible;
+        transition: none;
+
+
+       display:grid;
+       grid-template-columns:1fr max-content max-content;
+       grid-template-rows:auto auto;
+       column-gap:1em;
+    }
+
+
+    /* Menu items horizontaal in nav */
+    body > header nav ul {
+        display:flex;
+        flex-direction: row;
+        gap:1em;
+        
+        border: none;
+    }
+
+
+    /* Images in details figuren aanpassen */
+    details[open] figure {
+        
+        gap: 1rem;
+    }
+
+    details[open] figure img {
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+
+
+    /* SEARCH  */
+    body > header search {
+        border: none;
+    }
+
+
+}
+
+
+
+/* MAIN */
+
+h1{
+    text-align: center;
+
+}
+
+h4{
+    font-family: speedee-bold;
+}
+
+main {
+    margin: 1em;
+
+}
+
+main a { 
+    min-height:3em; 
+    padding:1rem 1rem; 
+    appearance:none; 
+    background:var(--background-button); 
+    border:none; 
+    border-radius:.3rem; 
+    cursor:pointer; 
+    display: inline-block; 
+    padding: 1rem; 
+    transition: 
+    background-color .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+main a:hover {
+    background-color: #e6a700; /* iets donkerder geel */
+    transform: translateY(-0.1em); /* kleine lift */
+    box-shadow: 0 .2em .5em rgba(0,0,0,.15);
+}
+
+main a:active {
+    transform: translateY(0); /* indrukken */
+    box-shadow: none;
+}
+
+main section:nth-of-type(1) p {
+    margin: 2em 0;
+    line-height: 1.8;
+}
+
+main section:nth-of-type(1) p:nth-of-type(1) {
+    margin: 0;
+    line-height: 1.8;
+}
+
+main section:nth-of-type(1) p:nth-of-type(3) {
+font-style: italic;
+margin: 0;
+}
+
+main section:nth-of-type(1) p:nth-of-type(4) {
+    margin: 0 0 1em 0;
+    line-height: 1.8;
+}
+
+
+
+/* TWEEDE SECTION */
+main section:nth-of-type(2) {
+    border-radius: 0.313em;
+    position: relative;
+    top: 5em;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+
+main section:nth-of-type(2) ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: "";
+    display: grid;
+
+    gap: 2em;
+
+}
+
+
+main section:nth-of-type(2) li {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    position: relative;
+    padding-bottom: 2rem;
+    max-width: 100%;
+}
+
+main section:nth-of-type(2) li img {
+    width: 100%;
+    max-width: 100%;
+}
+
+
+main section:nth-of-type(2) li video{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.313em;
+    
+}
+
+main section:nth-of-type(2) li h3,
+main section:nth-of-type(2) li p{
+    
+    display: block;
+    margin: 0;
+    padding: 0 1rem 0 1rem;
+    padding-top: 1rem;
+    box-sizing: border-box;
+}
+
+main section:nth-of-type(2) li p {
+    margin-bottom: 1em;
+    flex-grow: 1;
+}
+
+
+main section:nth-of-type(2) ul {
+    display: grid;
+
+    gap: 2em;
+}
+
+main section:nth-of-type(2) li a {
+    min-height: 3em;
+    
+    background: var(--background-button);
+    border-radius: .3rem;
+    text-decoration: none;
+    padding: 1rem;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: auto;
+    margin-top: auto;   
+    margin-left: 1rem;   
+}
+
+main section:nth-of-type(2) li a:active {
+    transform: translateY(0.063em);
+}
+
+@media (min-width: 62.5em) {
+    main section:nth-of-type(2) ul {
+        grid-template-columns: repeat(2, 1fr); /* twee kolommen voor de video's */
+    }
+
+    /* Laatste li (die met img) moet volle breedte beneden pakken */
+    main section:nth-of-type(2) li:last-of-type {
+        grid-column: 1 / -1; 
+    }
+
+
+    main section:nth-of-type(2) li:last-of-type img {
+        width: 100%;
+        display: block;
+    }
+}
+
+
+main section:nth-of-type(3) {
+    border-radius: 0.313em;
+    position: relative;
+    top: 5em;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    border: 0.063em solid rgb(177, 177, 177);
+    border-radius: 0.313em;
+    padding: 1em;
+    margin: 0 0 2em 0;   
+}
+
+main section:nth-of-type(3) h3{
+    margin:0;
+    margin: 0 0 1em 0;
+    font-family: speedee-regular;
+}
+
+@media (min-width: 62.5em) {
+    main section:nth-of-type(3) {
+        margin: 5em;
+    }
+}
+
+/* DERDE SECTION */
+
+main section:nth-of-type(4) ul {
+    margin:0;
+    padding:0;
+    list-style-type:"";
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75em, 1fr));
+    gap: 1em;
+
+    gap: 2em;
+}
+
+main section:nth-of-type(4) {
+    border-radius: 0.313em;
+    position: relative;
+    top: 5em;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+
+main section:nth-of-type(4) ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: "";
+    display: grid;
+
+    gap: 2em;
+
+}
+
+/* LI wordt grid container */
+main section:nth-of-type(4) li {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    position: relative;
+   
+    padding-bottom: 2rem;
+}
+
+/* IMG altijd bovenaan */
+main section:nth-of-type(4) li img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.313em;
+    order: -1;
+}
+
+/* Tekstdeel stylen zonder div */
+main section:nth-of-type(4) li h3,
+main section:nth-of-type(4) li p,
+main section:nth-of-type(4) li a {
+    
+    display: block;
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+
+main section:nth-of-type(4) li p {
+    margin-bottom: 1em;
+    flex-grow: 1;
+}
+
+/* Links */
+main section:nth-of-type(4) li a {
+    min-height: 3em;
+    
+    background: var(--background-button);
+    border-radius: .3rem;
+    text-decoration: none;
+    padding: 1rem;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: auto;
+    margin-top: auto;   
+    margin-left: 1rem;   
+}
+
+main section:nth-of-type(4) li a:active {
+    transform: translateY(0.063em);
+}
+
+
+
+
